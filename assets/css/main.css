@@ -1073,6 +1073,18 @@ div.demo img {
   color: var(--tp-common-white);
   overflow: hidden;
 }
+
+.btn-second {
+  position: relative;
+  display: inline-block;
+  padding: 16px 51px;
+  font-weight: 700;
+  font-size: 14px;
+  background: var(--tp-theme-secondary);
+  color: var(--tp-common-white);
+  overflow: hidden;
+}
+
 .tp-btn i {
   transform: translateY(1px);
   margin-left: 6px;
