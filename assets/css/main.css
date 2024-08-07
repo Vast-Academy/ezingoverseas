@@ -13067,12 +13067,12 @@ blockquote img {
   padding: 30px;
   text-align: center;
   background: var(--tp-theme-secondary);
-  width: 240px;
+  width: 220px;
   height: 194px;
   border: 5px solid white;
   position: absolute;
-  bottom: -375px;
-  left: 40px;
+  bottom: -360px;
+  left: 30px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .tp-benefits-progressbar {
