@@ -6017,7 +6017,7 @@ body .ui-tooltip {
   color: var(--tp-theme-primary);
 }
 .tp-header-3-logo {
-  background: var(--tp-common-white);
+  /* background: var(--tp-common-white); */
   width: 80%;
   height: 110px;
   line-height: 110px;
