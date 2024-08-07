@@ -9272,7 +9272,7 @@ blockquote img {
   margin-bottom: 15px;
   transform: translateY(2px);
   display: inline-block;
-  color: var(--tp-theme-secondary);
+  color: black;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 576px) and (max-width: 767px) {
   .tp-about-list ul li {
@@ -12318,6 +12318,8 @@ blockquote img {
 }
 .tp-contact-3-help {
   background: var(--tp-heading-primary);
+  width: 650px;
+  height: 100px;
   padding: 28px 40px;
   margin-bottom: 50px;
 }
