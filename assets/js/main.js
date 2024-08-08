@@ -292,7 +292,7 @@
 				loop: true,
 				effect: 'fade',
 				autoplay: {
-					delay: 5000,
+					delay: 10000,
 				},
 				// pagination
 				pagination: {
@@ -312,7 +312,7 @@
 				loop: true,
 				effect: 'fade',
 				autoplay: {
-					delay: 5000,
+					delay: 10000,
 				},
 				// pagination
 				pagination: {
