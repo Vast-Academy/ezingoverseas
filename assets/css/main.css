@@ -9424,6 +9424,7 @@ blockquote img {
 @media only screen and (min-width: 768px) and (max-width: 991px), only screen and (min-width: 576px) and (max-width: 767px), (max-width: 575px) {
   .tp-about-2-wrapper {
     margin-bottom: 50px;
+    position: fixed;
   }
 }
 .tp-about-2-wrapper .img-2 {
@@ -16264,3 +16265,5 @@ p.checkout-coupon input[type=text]:focus {
 }
 
 /*# sourceMappingURL=main.css.map */
+
+
