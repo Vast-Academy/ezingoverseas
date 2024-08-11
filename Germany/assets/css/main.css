@@ -13773,10 +13773,13 @@ blockquote img {
 .tp-visa-details-point ul li {
   position: relative;
   list-style: none;
-  margin-left: 80px;
+  margin-left: 30px;
   margin-bottom: 30px;
   font-size: 16px;
   color: var(--tp-text-body);
+}
+.tp-visa-details-point ul li a:hover{
+  color: var(--tp-theme-primary);
 }
 .tp-visa-details-point ul li:hover i {
   background: var(--tp-heading-primary);
@@ -13784,14 +13787,14 @@ blockquote img {
 .tp-visa-details-point ul li i {
   position: absolute;
   top: 0;
-  left: -80px;
-  height: 60px;
-  width: 60px;
+  left: -50px;
+  height: 30px;
+  width: 30px;
   display: inline-block;
   border-radius: 50%;
   text-align: center;
-  line-height: 60px;
-  font-size: 30px;
+  line-height: 30px;
+  font-size: 15px;
   color: var(--tp-common-white);
   -webkit-transition: all 0.3s 0s ease-out;
   -moz-transition: all 0.3s 0s ease-out;
