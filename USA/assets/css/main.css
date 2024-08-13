@@ -2197,7 +2197,7 @@ div.demo img {
   animation: tp-rotate 5s linear infinite;
 }
 .tp-preloader-circle svg circle:last-child {
-  stroke: var(--tp-theme-primary);
+  stroke: #0182c4;
   stroke-dashoffset: 0;
   stroke-dasharray: 1128, 3150;
   -webkit-animation: tp-loading 4s linear infinite;
