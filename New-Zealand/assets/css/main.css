@@ -13778,6 +13778,9 @@ blockquote img {
   font-size: 16px;
   color: var(--tp-text-body);
 }
+.tp-visa-details-point ul li a{
+  text-decoration: underline;  
+}
 .tp-visa-details-point ul li a:hover{
   color: var(--tp-theme-primary);
 }
