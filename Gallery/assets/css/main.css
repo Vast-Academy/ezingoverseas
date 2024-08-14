@@ -6025,6 +6025,10 @@ body .ui-tooltip {
 .tp-header-3-main-menu {
   margin-left: 10px;
 }
+.tp-header-main-menu .tp-main-menu-content ul li a.active{
+  color: var(--tp-theme-primary);
+  font-weight: bold;
+}
 @media only screen and (min-width: 1400px) and (max-width: 1599px), only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px), only screen and (min-width: 576px) and (max-width: 767px), (max-width: 575px) {
   .tp-header-3-main-menu {
     margin-left: 0;

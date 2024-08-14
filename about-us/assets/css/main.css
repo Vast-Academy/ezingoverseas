@@ -6042,6 +6042,10 @@ body .ui-tooltip {
 .tp-header-3-main-menu .tp-main-menu ul li a {
   padding: 42px 0;
 }
+.tp-header-main-menu .tp-main-menu-content ul li a.active{
+  color: var(--tp-theme-primary);
+  font-weight: bold;
+}
 .tp-header-3-main-right .tp-header-contact-search span i {
   color: var(--tp-common-white);
 }
