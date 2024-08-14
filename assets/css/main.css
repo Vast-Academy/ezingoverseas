@@ -1066,13 +1066,37 @@ div.demo img {
 .tp-btn {
   position: relative;
   display: inline-block;
+  width: 250px;
   padding: 16px 51px;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 16px;
   background: var(--tp-theme-primary);
   color: var(--tp-common-white);
   overflow: hidden;
+  text-align: center;
 }
+.btn-second{
+  position: relative;
+  display: inline-block;
+  padding: 16px 51px;
+  font-weight: 700;
+  font-size: 16px;
+  background: var(--tp-theme-secondary);
+  color: var(--tp-common-white);
+  overflow: hidden;
+  text-align: center;
+}
+
+@media (max-width: 576px) {
+  .tp-hero-3-button-wrapper {
+  flex-direction: column; 
+}
+  .tp-hero-btn {
+  width: 100%; 
+  text-align: center;
+  }
+}
+
 .tp-btn i {
   transform: translateY(1px);
   margin-left: 6px;
