@@ -1087,7 +1087,21 @@ div.demo img {
   text-align: center;
 }
 
-@media (max-width: 576px) {
+.btn-mobile .tp-hero-btn .tp-btn{
+  position: relative;
+  display: inline-block;
+  width: 250px;
+  height: 40px;
+  /* padding: 16px 51px; */
+  font-weight: 700;
+  font-size: 16px;
+  background: var(--tp-theme-primary);
+  color: var(--tp-common-white);
+  overflow: hidden;
+  text-align: center;
+}
+
+/* @media (max-width: 576px) {
   .tp-hero-3-button-wrapper {
   flex-direction: column; 
 }
@@ -1096,6 +1110,22 @@ div.demo img {
   text-align: center;
   }
 }
+
+@media (max-width: 768px) {
+  .tp-hero-3-bg {
+      background-size: cover; 
+      background-position: center; 
+      height: 60vh; 
+  }
+
+  .tp-hero-3-title {
+      font-size: 1.5rem; 
+  }
+
+  .tp-hero-3-button-wrapper {
+      flex-direction: column; 
+  }
+} */
 
 .tp-btn i {
   transform: translateY(1px);
@@ -8480,6 +8510,7 @@ blockquote img {
   -o-transition: all 10s linear 0s;
   transition: all 10s linear 0s;
 }
+
 @media only screen and (min-width: 1400px) and (max-width: 1599px), only screen and (min-width: 1200px) and (max-width: 1399px), only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px), only screen and (min-width: 576px) and (max-width: 767px), (max-width: 575px) {
   .tp-hero-3-bg {
     background-position: center;
@@ -8659,6 +8690,124 @@ blockquote img {
 .tp-hero-3-pagination .swiper-pagination-bullet-active {
   background: var(--tp-common-white);
 }
+
+/* General Mobile Adjustments */
+@media (max-width: 767px) {
+  /* Hide desktop view */
+  .tp-hero-3-area {
+    display: none;
+  }
+
+  /* Show mobile view */
+  .tp-hero-mobile {
+    display: block;
+  }
+
+  /* Mobile Background Image */
+  .tp-hero-3-bg-mobile {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 0;
+    transform: scale(1); /* Initial scale for animation */
+    transition: all 2s linear;
+  }
+
+  /* Background Overlay */
+  .tp-hero-3-bg-mobile::before {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(4, 11, 32, 0.6);
+  }
+
+  /* Title Style */
+  .tp-hero-3-title {
+    font-size: 35px; /* Adjust font size for mobile */
+    font-weight: 800;
+    text-transform: capitalize;
+    /* margin-top: 150px; */
+    margin-bottom: 20px;
+    letter-spacing: 0.36px;
+    color: var(--tp-common-white);
+    animation-delay: 0.5s;
+    animation-duration: 0.7s;
+    text-align: center; /* Center align text for mobile */
+  }
+
+  /* Remove line breaks in titles */
+  .tp-hero-3-title br {
+    display: none;
+  }
+
+  /* Button Wrapper */
+  .tp-hero-3-button-wrapper {
+    animation-delay: 0.9s;
+    animation-duration: 1s;
+    justify-content: center; /* Center align buttons */
+  }
+
+  .tp-hero-btn {
+    margin-bottom: 15px; /* Space between buttons */
+  }
+
+  /* Swiper Slide Padding Adjustments */
+  .tp-hero-3-active-mobile .swiper-wrapper .swiper-slide {
+    padding-top: 100px;
+    padding-bottom: 120px;
+  }
+
+   
+  .tp-hero-3-active-mobile .swiper-wrapper .swiper-slide.swiper-slide-active .tp-hero-3-shape {
+    animation-fill-mode: both;
+    animation-name: fadeInUp;
+    animation-duration: 0.7s;
+  }
+
+  .tp-hero-3-active-mobile .swiper-wrapper .swiper-slide.swiper-slide-active .tp-hero-3-title {
+    animation-fill-mode: both;
+    animation-name: fadeInUp;
+    animation-duration: 0.7s;
+  }
+
+  .tp-hero-3-active-mobile .swiper-wrapper .swiper-slide.swiper-slide-active .tp-hero-3-button-wrapper {
+    animation-fill-mode: both;
+    animation-name: fadeInUp;
+    animation-duration: 0.9s;
+  }
+
+  .tp-hero-3-active-mobile .swiper-wrapper .swiper-slide.swiper-slide-active .tp-hero-3-bg-mobile {
+    transform: scale(1.2);
+    transition: transform 0.7s ease-in-out;
+  }
+  
+
+  .tp-hero-3-pagination .swiper-pagination-bullet {
+    display: inline-block;
+    margin-right: 10px;
+    height: 15px;
+    width: 15px;
+  }
+
+  .tp-hero-3-pagination .swiper-pagination-bullet-active {
+    background: var(--tp-common-white);
+  }
+}
+
+/* Display None for Mobile Slider on Desktop */
+@media (min-width: 768px) {
+    .tp-hero-mobile {
+        display: none; /* Hide mobile slider on desktop */
+    }
+}
+ 
+
 .tp-hero-4-bg {
   position: absolute;
   top: 0px;
