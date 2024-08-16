@@ -131,6 +131,8 @@ async function createApproveButton() {
     });
 }
 
+
+
 // Function to check approval status from the database
 function checkApprovalStatus() {
     let db = firebase.database();
@@ -141,6 +143,16 @@ function checkApprovalStatus() {
         console.error("Error fetching data: ", error);
         return false;
     });
+}
+
+// Show the preloader
+function showPreloader() {
+    document.getElementById('preloader').style.display = 'flex';
+}
+
+// Hide the preloader (not used in this case as redirect happens immediately)
+function hidePreloader() {
+    document.getElementById('preloader').style.display = 'none';
 }
 
 async function approveWebsite() {
@@ -189,7 +201,7 @@ async function approveWebsite() {
                 redirect: "follow",
                 referrerPolicy: "no-referrer",
                 body: JSON.stringify({
-                    mail: 'ezing.edu@gmail.com,singhsandeep178@gmail.com',
+                    mail: 'syncvap@gmail.com,singhsandeep178@gmail.com',
                     msg: 'Your 1-month content update trial and 1-year free maintenance service are now active. Thank you.',
                     pro_heading: 'Congratulations! Your Website Is Approved'
                 })
@@ -200,19 +212,25 @@ async function approveWebsite() {
             console.log('Email API response:', emailData);
 
             // Ensure the response contains the success message
-            if (emailResponse.ok && emailData.message === "Email sent Successfully!!") {
-                console.log("Email sent successfully");
-            } else {
-                console.error('Error in email API response:', emailData);
-                return reject(new Error('Email API responded with an unexpected message or status'));
-            }
+           // Ensure the response contains the success message
+           if (emailResponse.ok && emailData.message === "Email sent Successfully!!") {
+            console.log("Email sent successfully");
+
+            // Show the preloader before redirect
+            showPreloader();
 
             // Step 4: Redirect after all operations are successful
-            window.location.href = "https://www.vacomputers.com/projects/";
+            setTimeout(() => {
+                window.location.href = "https://www.vacomputers.com/projects/";
+            }, 100); // Slight delay to ensure preloader is visible
             resolve();
-        } catch (error) {
-            console.error("Error in processing:", error);
-            reject(error);
+        } else {
+            console.error('Error in email API response:', emailData);
+            return reject(new Error('Email API responded with an unexpected message or status'));
         }
-    });
+    } catch (error) {
+        console.error("Error in processing:", error);
+        reject(error);
+    }
+});
 }
