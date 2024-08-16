@@ -1022,11 +1022,12 @@
                            <span class="tp-section-title-pre">//  Contact us</span>
                            <h3 class="tp-section-title">Get a Call Back </h3>
                         </div>
+                        <form action="https://formspree.io/f/xblrkadd" method="POST">
                         <div class="tp-contact-form">
-                           <input type="text" placeholder="Your Name*">
-                           <input type="email" placeholder="Your Email*">
-                           <input type="text" placeholder="Your Phone*">
-                           <select class="wide">
+                           <input type="text" placeholder="Your Name*" name="name" required>
+                           <input type="email" placeholder="Your Email*" name="email" required>
+                           <input type="text" placeholder="Your Phone*" name="number" required>
+                           <select class="wide" name="select serivce" required>
                               <option>Select Visa Type</option>
                               <option value="Study Visa">Study Visa</option>
                               <option value="Business Visa">Business Visa</option>
@@ -1034,7 +1035,7 @@
                               <option value="Tourism">Tourism</option>
                               <option value="Medical">Medical</option>
                            </select>
-                           <select class="wide">
+                           <select class="wide" name="select country" required>
                               <option>Select Your Country</option>
                               <option value="Australia">Australia</option>
                               <option value="Canada">Canada</option>
@@ -1045,10 +1046,11 @@
                               <option value="New Zealand">New Zealand</option>
                               <option value="United Kingdom">United Kingdom</option>
                            </select>
-                           <button class="tp-btn">Send Message</button>
+                           <button class="tp-btn" type="submit">Send Message</button>
                         </div>
                      </div>
                   </div>
+               </form>
                   <div class="col-lg-6 wow fadeInRight" data-wow-duration="1s" data-wow-delay=".3s">
                      <div class="tp-contact-3-title-wrapper mb-30 mt-50">
                         <h3 class="tp-section-title">Get In Touch</h3>
@@ -1498,7 +1500,7 @@
         
           <!-- Back to Top -->
           <a target="_blank"
-            href="https://api.whatsapp.com/send?phone=+918288921616&text=Hi!%20I%20have%20a%20query%20regarding%20the%20college"
+            href="https://api.whatsapp.com/send?phone=+918288921616&text=Hello!%20Ezing%20Overseas"
             class="whatsapp-icon">
             <img src="./assets/img/whatsapp-slnay-college-amritsar.png" alt="ezing-overseas-whatsapp" />
           </a>
