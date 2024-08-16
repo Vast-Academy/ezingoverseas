@@ -1067,31 +1067,6 @@ div.demo img {
   position: relative;
   display: inline-block;
   width: 250px;
-  padding: 16px 51px;
-  font-weight: 700;
-  font-size: 16px;
-  background: var(--tp-theme-primary);
-  color: var(--tp-common-white);
-  overflow: hidden;
-  text-align: center;
-}
-.btn-second{
-  position: relative;
-  display: inline-block;
-  padding: 16px 51px;
-  font-weight: 700;
-  font-size: 16px;
-  background: var(--tp-theme-secondary);
-  color: var(--tp-common-white);
-  overflow: hidden;
-  text-align: center;
-}
-
-.btn-mobile .tp-hero-btn .tp-btn{
-  position: relative;
-  display: inline-block;
-  width: 250px;
-  height: 40px;
   /* padding: 16px 51px; */
   font-weight: 700;
   font-size: 16px;
@@ -1100,6 +1075,12 @@ div.demo img {
   overflow: hidden;
   text-align: center;
 }
+.btn-second{
+  
+  background: var(--tp-theme-secondary);
+ 
+}
+
 
 /* @media (max-width: 576px) {
   .tp-hero-3-button-wrapper {
@@ -8184,7 +8165,7 @@ blockquote img {
   line-height: 1;
 }
 .tp-hero-btn .tp-btn {
-  padding: 23px 50px;
+  padding: 18px 10px;
 }
 @media (max-width: 575px) {
   .tp-hero-btn {
@@ -8694,121 +8675,103 @@ blockquote img {
   background: var(--tp-common-white);
 }
 
-/* General Mobile Adjustments */
-@media (max-width: 767px) {
-  /* Hide desktop view */
-  .tp-hero-3-area {
-    display: none;
-  }
-
-  /* Show mobile view */
-  .tp-hero-mobile {
-    display: block;
-  }
-
-  /* Mobile Background Image */
-  .tp-hero-3-bg-mobile {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    z-index: 0;
-    transform: scale(1); /* Initial scale for animation */
-    transition: all 2s linear;
-  }
-
-  /* Background Overlay */
-  .tp-hero-3-bg-mobile::before {
-    position: absolute;
-    content: "";
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background: rgba(4, 11, 32, 0.6);
-  }
-
-  /* Title Style */
-  .tp-hero-3-title {
-    font-size: 35px; /* Adjust font size for mobile */
-    font-weight: 800;
-    text-transform: capitalize;
-    /* margin-top: 150px; */
-    margin-bottom: 20px;
-    letter-spacing: 0.36px;
-    color: var(--tp-common-white);
-    animation-delay: 0.5s;
-    animation-duration: 0.7s;
-    text-align: center; /* Center align text for mobile */
-  }
-
-  /* Remove line breaks in titles */
-  .tp-hero-3-title br {
-    display: none;
-  }
-
-  /* Button Wrapper */
-  .tp-hero-3-button-wrapper {
-    animation-delay: 0.9s;
-    animation-duration: 1s;
-    justify-content: center; /* Center align buttons */
-  }
-
-  .tp-hero-btn {
-    margin-bottom: 15px; /* Space between buttons */
-  }
-
-  /* Swiper Slide Padding Adjustments */
-  .tp-hero-3-active-mobile .swiper-wrapper .swiper-slide {
-    padding-top: 100px;
-    padding-bottom: 120px;
-  }
-
-   
-  .tp-hero-3-active-mobile .swiper-wrapper .swiper-slide.swiper-slide-active .tp-hero-3-shape {
-    animation-fill-mode: both;
-    animation-name: fadeInUp;
-    animation-duration: 0.7s;
-  }
-
-  .tp-hero-3-active-mobile .swiper-wrapper .swiper-slide.swiper-slide-active .tp-hero-3-title {
-    animation-fill-mode: both;
-    animation-name: fadeInUp;
-    animation-duration: 0.7s;
-  }
-
-  .tp-hero-3-active-mobile .swiper-wrapper .swiper-slide.swiper-slide-active .tp-hero-3-button-wrapper {
-    animation-fill-mode: both;
-    animation-name: fadeInUp;
-    animation-duration: 0.9s;
-  }
-
-  .tp-hero-3-active-mobile .swiper-wrapper .swiper-slide.swiper-slide-active .tp-hero-3-bg-mobile {
-    transform: scale(1.2);
-    transition: transform 0.7s ease-in-out;
-  }
-  
-
-  .tp-hero-3-pagination .swiper-pagination-bullet {
-    display: inline-block;
-    margin-right: 10px;
-    height: 15px;
-    width: 15px;
-  }
-
-  .tp-hero-3-pagination .swiper-pagination-bullet-active {
-    background: var(--tp-common-white);
-  }
-}
-
-/* Display None for Mobile Slider on Desktop */
+/* Desktop View: Hide Mobile Slider */
 @media (min-width: 768px) {
-    .tp-hero-mobile {
-        display: none; /* Hide mobile slider on desktop */
-    }
+  .mobile-slider {
+      display: none;
+  }
 }
+
+/* Mobile View: Hide Desktop Slider */
+@media (max-width: 767px) {
+  .tp-hero-3-area:not(.mobile-slider) {
+      display: none;
+  }
+}
+
+/* Mobile-Specific Background Image */
+.mobile-bg {
+  position: absolute;
+  top: 0px;
+  /* height: 100%; */
+  width:100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 0;
+  transform: scale(1);
+  transition: all 10s linear 0s;
+  background-position: center; /* Ensure the image is centered */
+}
+
+/* Adjusting Shape Positioning for Mobile */
+.mobile-shape {
+  position: absolute;
+  top: 0;
+  right: 0;
+  animation-delay: 0.3s;
+  animation-duration: 0.5s;
+}
+
+.mobile-slider .swiper-slide{
+  height: 460px;
+}
+
+/* Adjusting Title Font Size for Mobile */
+@media (max-width: 767px) {
+  .tp-hero-3-title {
+      font-size: 30px; 
+      margin-top: 60px;
+  }
+
+  .tp-hero-3-pagination{
+    margin-left: 150px;
+  }
+}
+
+/* Mobile-Specific Button Styles */
+@media (max-width: 767px) {
+  .tp-hero-3-button-wrapper {
+      display: flex;
+      justify-content: space-between; /* Ensure buttons are aligned side by side */
+      align-items: center;
+      gap: 1px; 
+      flex-wrap: nowrap; 
+      /* margin-top: 200px; */
+  }
+
+  .tp-btn, .btn-second {
+      width: 150px; /* Make sure both buttons fit side by side */
+      height: 50px;
+      font-size: 12px; /* Slightly smaller font size */
+  }
+}
+
+
+/* .mobile-pagination {
+  position: absolute;
+  right: 20%;
+  bottom: 20px;
+  transform: translateX(50%);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.mobile-pagination .swiper-pagination-bullet {
+  height: 15px;
+  width: 15px;
+  opacity: 1;
+  display: inline-block;
+  margin-right: 10px;
+  border: 1px solid white;
+  background: transparent;
+  transition: all 0.3s ease-out;
+}
+
+.mobile-pagination .swiper-pagination-bullet-active {
+  background: var(--tp-common-white);
+} */
+
  
 
 .tp-hero-4-bg {
