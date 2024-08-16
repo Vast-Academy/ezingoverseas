@@ -1251,11 +1251,14 @@ div.demo img {
   transform: scale(1.05);
 }
 
+.tp-header-hamburger{}
+
 .hamburger-btn {
   width: 34px;
   height: 24px;
   border: 0;
   outline: 0;
+  left:60px;
   text-align: end;
   background: transparent;
   transform: translateY(-20%);
@@ -5545,7 +5548,7 @@ body .ui-tooltip {
 }
 @media only screen and (min-width: 768px) and (max-width: 991px), only screen and (min-width: 576px) and (max-width: 767px), (max-width: 575px) {
   .tp-header-logo img {
-    max-width: 100%;
+    width: 100%;
   }
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px), only screen and (min-width: 576px) and (max-width: 767px), (max-width: 575px) {
@@ -6067,7 +6070,7 @@ body .ui-tooltip {
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px), only screen and (min-width: 576px) and (max-width: 767px), (max-width: 575px) {
   .tp-header-3-logo {
-    height: 90px;
+    width: 150px;
     line-height: 90px;
     padding: 0 10px;
   }
