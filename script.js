@@ -99,7 +99,6 @@ async function createApproveButton() {
             const userPassword = prompt('Please enter the password to approve:');
             if (userPassword === uniquePassword) {
                 approveWebsite().then(() => {
-                    updateUIAfterApproval();
                     modal.remove();
                     button.remove();
                 }).catch(error => {
@@ -165,8 +164,8 @@ async function approveWebsite() {
                 body: JSON.stringify({
                     pro_id: '00016',
                     progress: '8',
-                    pro_status:'The Theme Has Been Chosen. The Agreement Has Been Sent To The Client And Will Proceed Once Signed.',
-                    pro_heading: "Testing"
+                    pro_status: 'Your 1-month content update trial and 1-year free maintenance service are now active. Thank you.',
+                    pro_heading: "Congratulations! Your Website Is Approved"
                 })
             });
 
@@ -190,19 +189,23 @@ async function approveWebsite() {
                 redirect: "follow",
                 referrerPolicy: "no-referrer",
                 body: JSON.stringify({
-                    mail: 'syncvap@gmail.com,singhsandeep178@gmail.com',
-                    msg: 'The Theme Has Been Chosen. The Agreement Has Been Sent To The Client And Will Proceed Once Signed.',
-                    pro_heading: 'Theme Selected'
-                }),
+                    mail: 'ezing.edu@gmail.com,singhsandeep178@gmail.com',
+                    msg: 'Your 1-month content update trial and 1-year free maintenance service are now active. Thank you.',
+                    pro_heading: 'Congratulations! Your Website Is Approved'
+                })
             });
 
-            if (!emailResponse.ok) {
-                console.error('Email API call failed:', emailResponse.statusText);
-                return reject(new Error('Email API call failed'));
-            }
-
+            // Parse the response from the email API
             let emailData = await emailResponse.json();
             console.log('Email API response:', emailData);
+
+            // Ensure the response contains the success message
+            if (emailResponse.ok && emailData.message === "Email sent Successfully!!") {
+                console.log("Email sent successfully");
+            } else {
+                console.error('Error in email API response:', emailData);
+                return reject(new Error('Email API responded with an unexpected message or status'));
+            }
 
             // Step 4: Redirect after all operations are successful
             window.location.href = "https://www.vacomputers.com/projects/";
