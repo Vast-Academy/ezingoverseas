@@ -36,7 +36,7 @@ async function createApproveButton() {
     button.style.cursor = 'pointer';
 
     try {
-        let dataSrc = await db.ref("project/3GDigital").once('value');
+        let dataSrc = await db.ref("project/EzingOverseas").once('value');
         let data = dataSrc.val();
         if (data != null) {
             console.log(data.approveWebsite);
@@ -95,7 +95,7 @@ async function createApproveButton() {
         yesButton.style.fontSize = '16px';
         yesButton.style.fontWeight = 'bold';
                yesButton.addEventListener('click', () => {
-            const uniquePassword = '2363'; // Set your unique password here
+            const uniquePassword = '6233'; // Set your unique password here
             const userPassword = prompt('Please enter the password to approve:');
             if (userPassword === uniquePassword) {
                 approveWebsite().then(() => {
@@ -135,7 +135,7 @@ async function createApproveButton() {
 // Function to check approval status from the database
 function checkApprovalStatus() {
     let db = firebase.database();
-    return db.ref("project/3GDigital").once('value').then(snapshot => {
+    return db.ref("project/EzingOverseas").once('value').then(snapshot => {
         const data = snapshot.val();
         return data && Object.values(data).some(item => item["Approved The Website"]);
     }).catch((error) => {
@@ -152,19 +152,18 @@ function approveWebsite() {
             "approveWebsite": true
         };
 
-        db.ref("project/3GDigital").set(data).then(() => {
+        db.ref("project/EzingOverseas").set(data).then(() => {
             console.log("Data saved successfully");
-            location.href = "../clients/";
+            window.location.href = "https://www.vacomputers.com/projects/";
 
-            // Call your backend route to update the project node
-            fetch('https://vacomputers-com-client-api.vercel.app/updateProjectNode', {
+            fetch('https://vacomputers-com-client-api.vercel.app/updateProject', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    pro_id: '00002', // Replace with actual project ID
-                    progress: '6' // Replace with actual progress value
+                    pro_id: '00016', 
+                    progress: '8' 
                 })
             }).then(response => response.json())
                 .then(data => {
@@ -188,30 +187,3 @@ function approveWebsite() {
 
 
 
-document.addEventListener("DOMContentLoaded", function () {
-    const currentClassElement = document.querySelector('.current');
-
-    const img = document.createElement('img');
-    img.style.position = 'absolute';
-    img.style.zIndex = '9999';
-    img.style.width = '20px';
-    img.src = './assets/ball.png';
-
-    const sonarWave1 = document.createElement('div');
-    sonarWave1.classList.add('sonar-wave', 'sonar-wave1');
-
-    const sonarWave2 = document.createElement('div');
-    sonarWave2.classList.add('sonar-wave', 'sonar-wave2');
-    sonarWave1.appendChild(sonarWave2);
-
-    const sonarWave3 = document.createElement('div');
-    sonarWave3.classList.add('sonar-wave', 'sonar-wave3');
-    sonarWave1.appendChild(sonarWave3);
-
-    const sonarWave4 = document.createElement('div');
-    sonarWave4.classList.add('sonar-wave', 'sonar-wave4');
-    sonarWave1.appendChild(sonarWave4);
-
-    currentClassElement.append(img);
-    currentClassElement.append(sonarWave1);
-});
