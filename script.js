@@ -144,46 +144,72 @@ function checkApprovalStatus() {
     });
 }
 
-function approveWebsite() {
-    return new Promise((resolve, reject) => {
+async function approveWebsite() {
+    return new Promise(async (resolve, reject) => {
         let db = firebase.database();
         let data = {
             "approveWebsite": true
         };
 
-        // Update Firebase database
-        db.ref("project/EzingOverseas").set(data)
-            .then(() => {
-                console.log("Data saved successfully");
+        try {
+            // Step 1: Update Firebase database
+            await db.ref("project/EzingOverseas").set(data);
+            console.log("Data saved successfully");
 
-                // Make fetch request to update project
-                return fetch('https://vacomputers-com-client-api.vercel.app/updateProject', {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        pro_id: '00016', 
-                        progress: '8'
-                    })
-                });
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === "success") {
-                    console.log("Project node updated successfully:", data);
-
-                    // Redirect after successful fetch
-                    window.location.href = "https://www.vacomputers.com/projects/";
-                    resolve();
-                } else {
-                    console.error("Error updating project node:", data);
-                    reject(data);
-                }
-            })
-            .catch(error => {
-                console.error("Error updating project node:", error);
-                reject(error);
+            // Step 2: Update project node via API
+            let projectUpdateResponse = await fetch('https://vacomputers-com-client-api.vercel.app/updateProject', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    pro_id: '00016',
+                    progress: '8',
+                    pro_status:'The Theme Has Been Chosen. The Agreement Has Been Sent To The Client And Will Proceed Once Signed.',
+                    pro_heading: "Testing"
+                })
             });
+
+            let projectUpdateData = await projectUpdateResponse.json();
+            if (projectUpdateData.status === "success") {
+                console.log("Project node updated successfully:", projectUpdateData);
+            } else {
+                console.error("Error updating project node:", projectUpdateData);
+                return reject(projectUpdateData);
+            }
+
+            // Step 3: Send email notification via API
+            let emailResponse = await fetch('https://vacomputers-email-api.vercel.app/update', {
+                method: "POST",
+                mode: "cors",
+                cache: "no-cache",
+                credentials: "same-origin",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                redirect: "follow",
+                referrerPolicy: "no-referrer",
+                body: JSON.stringify({
+                    mail: 'syncvap@gmail.com,singhsandeep178@gmail.com',
+                    msg: 'The Theme Has Been Chosen. The Agreement Has Been Sent To The Client And Will Proceed Once Signed.',
+                    pro_heading: 'Theme Selected'
+                }),
+            });
+
+            if (!emailResponse.ok) {
+                console.error('Email API call failed:', emailResponse.statusText);
+                return reject(new Error('Email API call failed'));
+            }
+
+            let emailData = await emailResponse.json();
+            console.log('Email API response:', emailData);
+
+            // Step 4: Redirect after all operations are successful
+            window.location.href = "https://www.vacomputers.com/projects/";
+            resolve();
+        } catch (error) {
+            console.error("Error in processing:", error);
+            reject(error);
+        }
     });
 }
