@@ -144,7 +144,6 @@ function checkApprovalStatus() {
     });
 }
 
-// Function to approve the website
 function approveWebsite() {
     return new Promise((resolve, reject) => {
         let db = firebase.database();
@@ -152,38 +151,39 @@ function approveWebsite() {
             "approveWebsite": true
         };
 
-        db.ref("project/EzingOverseas").set(data).then(() => {
-            console.log("Data saved successfully");
-            window.location.href = "https://www.vacomputers.com/projects/";
+        // Update Firebase database
+        db.ref("project/EzingOverseas").set(data)
+            .then(() => {
+                console.log("Data saved successfully");
 
-            fetch('https://vacomputers-com-client-api.vercel.app/updateProject', {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    pro_id: '00016', 
-                    progress: '8' 
-                })
-            }).then(response => response.json())
-                .then(data => {
-                    if (data.status === "success") {
-                        console.log("Project node updated successfully:", data);
-                        resolve();
-                    } else {
-                        console.error("Error updating project node:", data);
-                        reject(data);
-                    }
-                }).catch(error => {
-                    console.error("Error updating project node:", error);
-                    reject(error);
+                // Make fetch request to update project
+                return fetch('https://vacomputers-com-client-api.vercel.app/updateProject', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        pro_id: '00016', 
+                        progress: '8'
+                    })
                 });
-        }).catch((error) => {
-            console.error("Error saving data: ", error);
-            reject(error);
-        });
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === "success") {
+                    console.log("Project node updated successfully:", data);
+
+                    // Redirect after successful fetch
+                    window.location.href = "https://www.vacomputers.com/projects/";
+                    resolve();
+                } else {
+                    console.error("Error updating project node:", data);
+                    reject(data);
+                }
+            })
+            .catch(error => {
+                console.error("Error updating project node:", error);
+                reject(error);
+            });
     });
 }
-
-
-
