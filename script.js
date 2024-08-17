@@ -1,10 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Check the approval status from the database
     checkApprovalStatus().then(isApproved => {
         const currentUrl = window.location.href;
         const excludedPaths = ["clients/", "clients/index.html"];
-
-        // Check if the current URL contains any of the excluded paths
         const isExcluded = excludedPaths.some(path => currentUrl.includes(path));
 
         if (!isApproved && !isExcluded) {
@@ -32,7 +29,7 @@ async function createApproveButton() {
     button.style.padding = '10px 20px';
     button.style.fontSize = '16px';
     button.style.fontWeight = 'bold';
-    button.style.zIndex = '99999999999';
+    button.style.zIndex = '9999999';
     button.style.cursor = 'pointer';
 
     try {
@@ -94,7 +91,10 @@ async function createApproveButton() {
         yesButton.style.marginRight = '10px';
         yesButton.style.fontSize = '16px';
         yesButton.style.fontWeight = 'bold';
-               yesButton.addEventListener('click', () => {
+
+        yesButton.addEventListener('click', () => {
+            showPreloader(); // Show preloader immediately after clicking Yes
+
             const uniquePassword = '6233'; // Set your unique password here
             const userPassword = prompt('Please enter the password to approve:');
             if (userPassword === uniquePassword) {
@@ -105,6 +105,7 @@ async function createApproveButton() {
                     console.error('Error approving the website:', error);
                 });
             } else {
+                hidePreloader(); // Hide preloader if the password is incorrect
                 alert('Wrong password! Please enter the correct password.');
             }
         });
@@ -131,9 +132,6 @@ async function createApproveButton() {
     });
 }
 
-
-
-// Function to check approval status from the database
 function checkApprovalStatus() {
     let db = firebase.database();
     return db.ref("project/EzingOverseas").once('value').then(snapshot => {
@@ -145,12 +143,10 @@ function checkApprovalStatus() {
     });
 }
 
-// Show the preloader
 function showPreloader() {
     document.getElementById('preloader').style.display = 'flex';
 }
 
-// Hide the preloader (not used in this case as redirect happens immediately)
 function hidePreloader() {
     document.getElementById('preloader').style.display = 'none';
 }
@@ -201,36 +197,30 @@ async function approveWebsite() {
                 redirect: "follow",
                 referrerPolicy: "no-referrer",
                 body: JSON.stringify({
-                    mail: 'syncvap@gmail.com,singhsandeep178@gmail.com',
+                    mail: 'ezing.edu@gmail.com,singhsandeep178@gmail.com',
                     msg: 'Your 1-month content update trial and 1-year free maintenance service are now active. Thank you.',
                     pro_heading: 'Congratulations! Your Website Is Approved'
                 })
             });
 
-            // Parse the response from the email API
             let emailData = await emailResponse.json();
             console.log('Email API response:', emailData);
 
-            // Ensure the response contains the success message
-           // Ensure the response contains the success message
-           if (emailResponse.ok && emailData.message === "Email sent Successfully!!") {
-            console.log("Email sent successfully");
+            if (emailResponse.ok && emailData.message === "Email sent Successfully!!") {
+                console.log("Email sent successfully");
 
-            // Show the preloader before redirect
-            showPreloader();
-
-            // Step 4: Redirect after all operations are successful
-            setTimeout(() => {
-                window.location.href = "https://www.vacomputers.com/projects/";
-            }, 100); // Slight delay to ensure preloader is visible
-            resolve();
-        } else {
-            console.error('Error in email API response:', emailData);
-            return reject(new Error('Email API responded with an unexpected message or status'));
+                // Keep the preloader visible until the redirection completes
+                setTimeout(() => {
+                    window.location.href = "https://www.vacomputers.com/projects/";
+                }, 500); // Extend the delay slightly to ensure preloader visibility
+                resolve();
+            } else {
+                console.error('Error in email API response:', emailData);
+                return reject(new Error('Email API responded with an unexpected message or status'));
+            }
+        } catch (error) {
+            console.error("Error in processing:", error);
+            reject(error);
         }
-    } catch (error) {
-        console.error("Error in processing:", error);
-        reject(error);
-    }
-});
+    });
 }
