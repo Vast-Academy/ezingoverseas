@@ -8517,7 +8517,7 @@ blockquote img {
   animation-duration: 0.5s;
 }
 .tp-hero-3-title {
-  font-size: 90px;
+  font-size: 50px;
   font-weight: 800;
   text-transform: capitalize;
   margin-bottom: 35px;
@@ -8528,7 +8528,7 @@ blockquote img {
 }
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {
   .tp-hero-3-title {
-    font-size: 80px;
+    font-size: 50px;
   }
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
