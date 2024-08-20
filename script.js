@@ -197,7 +197,7 @@ async function approveWebsite() {
                 redirect: "follow",
                 referrerPolicy: "no-referrer",
                 body: JSON.stringify({
-                    mail: 'ezing.edu@gmail.com,singhsandeep178@gmail.com',
+                    mail: 'ezing.edu@gmail.com,singhsandeep178@gmail.com,ezing.overseas@gmail.com',
                     msg: 'Your 1-month content update trial and 1-year free maintenance service are now active. Thank you.',
                     pro_heading: 'Congratulations! Your Website Is Approved'
                 })
