@@ -5971,7 +5971,7 @@ body .ui-tooltip {
 /*----------------------------------------*/
 .tp-header-3-sticky {
   background: var(--tp-theme-1);
-  padding: 0 302px 0 266px;
+  /* padding: 0 302px 0 266px; */
 }
 @media only screen and (min-width: 1700px) and (max-width: 1800px), only screen and (min-width: 1600px) and (max-width: 1700px) {
   .tp-header-3-sticky {
