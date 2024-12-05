@@ -7999,7 +7999,7 @@ blockquote img {
     margin-bottom: 20px;
   }
 }
-.tp-footer-copyright-inner a {
+.tp-footer-copyright-inner a.developed-by {
   height: 38px;
   width: 38px;
   font-size: 18px;
@@ -8009,13 +8009,19 @@ blockquote img {
   color: var(--tp-common-white);
   background: #16171a;
 }
-.tp-footer-copyright-inner a:not(:last-of-type) {
-  margin-right: 15px;
+.tp-footer-copyright-inner a{
+  color: rgb(216, 213, 213);
+  text-decoration: underline;
 }
-.tp-footer-copyright-inner a:hover {
+.tp-footer-copyright-inner a:hover{
+  text-decoration: none;
+}
+.tp-footer-copyright-inner a:not(:last-of-type) {
+  /* margin-right: 15px; */
+}
+.tp-footer-copyright-inner a.developed-by:hover {
   background: var(--tp-theme-primary);
 }
-
 /* footer col design for home 1 */
 .tp-footer-col-2 {
   padding-left: 25px;
